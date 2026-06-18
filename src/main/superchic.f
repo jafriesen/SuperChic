@@ -362,6 +362,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
       bp=tbeam(1:len(trim(tbeam)))//tdiff(1:len(trim(tdiff)))
 
       if(proc.eq.1.and.(bp.eq.'ppel')) goto 111
+      if(proc.eq.85.and.(bp.eq.'ppel')) goto 111
       if(proc.eq.2.and.(bp.eq.'ppel')) goto 111
       if(proc.eq.3.and.(bp.eq.'ppel')) goto 111
       if(proc.eq.4.and.(bp.eq.'ppel')) goto 111
@@ -428,6 +429,10 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
       if(proc.eq.60.and.(bp.eq.'pAel'.or.bp.eq.'AAel'.or.bp.eq.'eeel'
      &.or.bp.eq.'ppel')) goto 111
       if(proc.eq.61.and.(bp.eq.'pAel')) goto 111
+      if(proc.eq.62.and.(bp.eq.'pAel'.or.bp.eq.'AAel'.or.bp.eq.'eeel'
+     &.or.bp.eq.'ppdd'.or.bp.eq.'ppsd'.or.bp.eq.'ppel')) goto 111
+      if(proc.eq.63.and.(bp.eq.'pAel'.or.bp.eq.'AAel'.or.bp.eq.'eeel'
+     &.or.bp.eq.'ppdd'.or.bp.eq.'ppsd'.or.bp.eq.'ppel')) goto 111
       if(proc.eq.68.and.(bp.eq.'pAel'.or.bp.eq.'AAel'.or.bp.eq.'eeel'
      &.or.bp.eq.'ppdd'.or.bp.eq.'ppsd'.or.bp.eq.'ppel')) goto 111
       if(proc.eq.69.and.(bp.eq.'pAel'.or.bp.eq.'AAel'.or.bp.eq.'eeel'

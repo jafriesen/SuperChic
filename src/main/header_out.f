@@ -142,7 +142,7 @@ ccc   prints out header information
      &**************'
       write(56,*)''
       endif
-      if(proc.eq.5.or.proc.eq.6)then
+      if(proc.eq.5.or.proc.eq.6.or.proc.eq.62.or.proc.eq.63)then
        write(56,*)'*********************** Jet cuts ********************
      &**************'
       write(56,99)' *',rjet,' :  Jet Radius'

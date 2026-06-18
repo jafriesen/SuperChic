@@ -629,6 +629,8 @@ ccccccccccccccccccc
 
          if(proc.eq.1.or.proc.eq.60.or.proc.eq.67)then
             call twobody(1,5,6,7,mb,mb,wt2)
+         elseif(proc.eq.85)then
+            call twobody(1,5,6,7,mc,mc,wt2)
          elseif(proc.eq.68.or.proc.eq.69.or.proc.eq.70)then
             call twobody(1,5,6,7,0d0,0d0,wt2)
          elseif(proc.eq.18.or.proc.eq.19.or.proc.eq.20)then
@@ -674,7 +676,7 @@ ccccccccccccccccccc
          elseif(proc.eq.54.or.proc.eq.61)then
             call twobodyw(6,8,9,0d0,mmu)
             call twobodyw(7,10,11,0d0,mmu)
-         elseif(proc.eq.55.or.proc.eq.62)then
+         elseif(proc.eq.55)then
             if(wlp_lep)then
                call wwmix
             elseif(wlm_lep)then
@@ -1204,7 +1206,7 @@ c                   p2- + cc2/p1+ = aa2
 
                call twojetps(mx,mq,rarr(6),rphi,ps,uh,th)
 
-               if(proc.eq.55.or.proc.eq.62)then
+               if(proc.eq.55)then
                   elcollw=.true.
                   
                   if(wlp_lep)then

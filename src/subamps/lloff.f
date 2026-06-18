@@ -181,6 +181,7 @@ ccc   gamma gamma --> l+l- subprocess amplitude - off-shell
       include 'zi.f'
       include 'zoutarr.f'
       include 'eff.f'
+      include 'proc.f'
 
       do i=1,4
          q1(i)=q(i,1)-q(i,3)
@@ -263,6 +264,11 @@ ccc   gamma gamma --> l+l- subprocess amplitude - off-shell
       zout=zout1+zout2
       zout=zout*4d0*pi*dsqrt(alphaEM(qsq1)*alphaEM(qsq2))
       zout=zout*dsqrt(conv)*dsqrt(beta)
+      if(proc.eq.62)then
+         zout=zout*dsqrt(3d0)*(2d0/3d0)**2
+      elseif(proc.eq.63)then
+         zout=zout*dsqrt(3d0)*(1d0/3d0)**2
+      endif
 
 444      zoutarr(p,i1,i2)=zout
 

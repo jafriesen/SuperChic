@@ -77,7 +77,11 @@ ccc   gamma gamma --> l+l- subprocess amplitude
       normp=normp*conv
       normp=dsqrt(normp)
 
-      if(proc.eq.61)normp=normp*dsqrt(3d0)*(2d0/3d0)**2 ! ttbar
+      if(proc.eq.61.or.proc.eq.62)then  ! ttbar or ccbar
+         normp=normp*dsqrt(3d0)*(2d0/3d0)**2
+      elseif(proc.eq.63)then  ! bbbar
+         normp=normp*dsqrt(3d0)*(1d0/3d0)**2
+      endif
       if(proc.eq.76)normp=normp*dsqrt(2d0) ! L + R sleptons
 
       

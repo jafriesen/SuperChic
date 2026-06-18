@@ -18,7 +18,8 @@ ccc   calls subprocess amplitude
             if(proc.eq.54.or.proc.eq.55)then
                   call wwoff_axial(p)
             endif
-            if(proc.eq.56.or.proc.eq.57.or.proc.eq.58)then
+            if(proc.eq.56.or.proc.eq.57.or.proc.eq.58.or.proc.eq.62
+     &         .or.proc.eq.63)then
                call lloff(p)
             endif
 
@@ -46,6 +47,7 @@ ccc   calls subprocess amplitude
      &           +cdabs(pm)**2+cdabs(mp)**2
          enddo
       elseif(proc.eq.56.or.proc.eq.57.or.proc.eq.58.or.proc.eq.61
+     &   .or.proc.eq.62.or.proc.eq.63
      &   .or.proc.eq.73.or.proc.eq.74.or.proc.eq.75.or.
      &        proc.eq.76)then
          do p=1,pol

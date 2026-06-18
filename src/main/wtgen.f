@@ -14,7 +14,7 @@ ccc   calls subprocess amplitude
 
       do p=1,pol
 
-      if(proc.eq.1)then
+      if(proc.eq.1.or.proc.eq.85)then
             call higgs(mx,zpp,zmm,zpm,zmp)
          elseif(proc.eq.2)then
             call setmu(mu)

@@ -63,6 +63,8 @@ ccc   proc=58- gamma gamma --> tau+tau- production
 ccc   proc=59 - gamma gamma --> gamma gamma production
 ccc   proc=60 - gamma gamma --> Higgs --> bbar production
 ccc   proc=61 - gamma gamma --> ttbar production
+ccc   *proc=62 - gamma gamma --> c cbar
+ccc   *proc=63 - gamma gamma --> b bbar
 ccc   proc=68 - gamma gamma --> ALP production
 ccc   proc=69 - gamma gamma --> Monopolium (Dirac coupling)
 ccc   proc=70 - gamma gamma --> Monopolium (Beta-g coupling)
@@ -153,7 +155,7 @@ cccccccccccccccc
       decays=.false.
       jz2=.false.
 
-      if(proc.lt.54)then
+      if(proc.lt.54.or.proc.eq.85)then
          qcd=.true.
       else
          qcd=.false.
@@ -164,18 +166,52 @@ cccccccccccccccc
          pol=1
          dps=1
          sym=1d0
-         mres=126d0
+         mres=125d0
          procn='Higgs Boson --> bbar'
          call higgsinit(mres)
          call twobodyinit(1,mres,mb,mb)
          nbr=1
-         br(1)=0.561d0        ! Branching to bbar : arXiv:1307.1347
+         br(1)= 0.5792d0    ! 0.561d0 Branching to bbar : arXiv:1307.1347
          decays=.true.
          pdgid(5)=25
          pdgid(6)=5
          pdgid(7)=-5
          decay2=.true.
          mq=mb
+         istup(5)=2
+         istup(6)=1
+         istup(7)=1
+         mothup(1,6)=3
+         mothup(2,6)=0
+         mothup(1,7)=3
+         mothup(2,7)=0
+         icolup(1,6)=501
+         icolup(2,6)=0
+         icolup(1,7)=0
+         icolup(2,7)=501
+         isthep(5)=2
+         isthep(6)=1
+         isthep(7)=1
+         jdahep(1,5)=6
+         jdahep(2,5)=7
+         nhep=7
+      elseif(proc.eq.85)then
+         ndim=4
+         pol=1
+         dps=1
+         sym=1d0
+         mres=125d0
+         procn='Higgs Boson --> ccbar'
+         call higgsinit(mres)
+         call twobodyinit(1,mres,mc,mc)
+         nbr=1
+         br(1)= 0.02876d0
+         decays=.true.
+         pdgid(5)=25
+         pdgid(6)=4
+         pdgid(7)=-4
+         decay2=.true.
+         mq=mc
          istup(5)=2
          istup(6)=1
          istup(7)=1
@@ -2826,7 +2862,7 @@ c         offshell=.false.
          pol=1
          dps=1
          sym=1d0
-         mres=126d0
+         mres=125d0
          procn='Higgs Boson --> bbar'
          call higgsgaminit(mres)
          call twobodyinit(1,mres,mb,mb)
@@ -2884,6 +2920,122 @@ c         offshell=.false.
          jdahep(2,5)=7
          gamma=.true.
          nhep=7
+      elseif(proc.eq.62)then
+         ndim=6
+         pol=4
+         mq=mc
+         dps=2
+         sym=1d0
+         procn='gamma gamma --> ccbar'
+         gamma=.true.
+         if(beam.eq.'prot')then
+            offshell=.true.
+            if(erec.eq.'lhe'.and.diff.ne.'el')enew=.true.
+         endif
+         if(erec.eq.'lhe'.and.diff.ne.'el')enew=.true.
+         if(enew)then
+            if(diff.eq.'el')i1=5
+            if(diff.eq.'sd')i1=6
+            if(diff.eq.'dd')i1=7
+            nhep=i1+1
+            pdgid(i1)=4
+            pdgid(i1+1)=-4
+            istup(i1)=1
+            istup(i1+1)=1
+            mothup(1,i1)=1
+            mothup(1,i1+1)=1
+            mothup(2,i1)=2
+            mothup(2,i1+1)=2
+            if(diff.eq.'sd')then
+               mothup(2,i1)=2
+               mothup(2,i1+1)=2
+            endif
+            icolup(1,i1)=501
+            icolup(2,i1)=0
+            icolup(1,i1+1)=0
+            icolup(2,i1+1)=501
+            isthep(i1)=1
+            isthep(i1+1)=1
+         else
+            pdgid(5)=93
+            pdgid(6)=4
+            pdgid(7)=-4
+            istup(5)=2
+            istup(6)=1
+            istup(7)=1
+            mothup(1,6)=3
+            mothup(2,6)=0
+            mothup(1,7)=3
+            mothup(2,7)=0
+            icolup(1,6)=501
+            icolup(2,6)=0
+            icolup(1,7)=0
+            icolup(2,7)=501
+            isthep(5)=2
+            isthep(6)=1
+            isthep(7)=1
+            jdahep(1,5)=6
+            jdahep(2,5)=7
+            nhep=7
+         endif
+      elseif(proc.eq.63)then
+         ndim=6
+         pol=4
+         mq=mb
+         dps=2
+         sym=1d0
+         procn='gamma gamma --> bbbar'
+         gamma=.true.
+         if(beam.eq.'prot')then
+            offshell=.true.
+            if(erec.eq.'lhe'.and.diff.ne.'el')enew=.true.
+         endif
+         if(erec.eq.'lhe'.and.diff.ne.'el')enew=.true.
+         if(enew)then
+            if(diff.eq.'el')i1=5
+            if(diff.eq.'sd')i1=6
+            if(diff.eq.'dd')i1=7
+            nhep=i1+1
+            pdgid(i1)=5
+            pdgid(i1+1)=-5
+            istup(i1)=1
+            istup(i1+1)=1
+            mothup(1,i1)=1
+            mothup(1,i1+1)=1
+            mothup(2,i1)=2
+            mothup(2,i1+1)=2
+            if(diff.eq.'sd')then
+               mothup(2,i1)=2
+               mothup(2,i1+1)=2
+            endif
+            icolup(1,i1)=501
+            icolup(2,i1)=0
+            icolup(1,i1+1)=0
+            icolup(2,i1+1)=501
+            isthep(i1)=1
+            isthep(i1+1)=1
+         else
+            pdgid(5)=93
+            pdgid(6)=5
+            pdgid(7)=-5
+            istup(5)=2
+            istup(6)=1
+            istup(7)=1
+            mothup(1,6)=3
+            mothup(2,6)=0
+            mothup(1,7)=3
+            mothup(2,7)=0
+            icolup(1,6)=501
+            icolup(2,6)=0
+            icolup(1,7)=0
+            icolup(2,7)=501
+            isthep(5)=2
+            isthep(6)=1
+            isthep(7)=1
+            jdahep(1,5)=6
+            jdahep(2,5)=7
+            nhep=7
+         endif
       elseif(proc.eq.68)then
          if(beam.eq.'prot')then
             offshell=.true.

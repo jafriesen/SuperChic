@@ -201,6 +201,7 @@ set(TABLE_58 "$\\tau^+(6)\\,+\\,\\tau^-(7)$; ")
 set(TABLE_59 "$\\gamma(6)\\,+\\,\\gamma(7)$; ")
 set(TABLE_60 "$H(5) \\to b(6)\\,+\\,\\overline{b}(6)$; ")
 set(TABLE_61 "Not documented; ")
+set(TABLE_62 "$c(6)\\,+\\,\\overline{c}(7)$; ")
 set(TABLE_68 "$a(5)\\to \\gamma(6)\\,+\\,\\gamma(7)$; ")
 set(TABLE_69 "$M(5) \\to \\gamma(6)\\,+\\,\\gamma(7)$ (Dirac Coupling); ")
 set(TABLE_70 "$M(5) \\to \\gamma(6)\\,+\\,\\gamma(7)$ ($\\beta g$ Coupling); ")
@@ -216,6 +217,7 @@ set(TABLE_79 "$\\psi_{2S}(5)\\to e^+(6)e^-(7)$; ")
 set(TABLE_82 "$X(6) + \\gamma(7)$; ")
 set(TABLE_83 "$X(6) + Z(7)(\\to \\mu^+ (8)+\\mu^- (9))$; ")
 set(TABLE_84 "Not documented; ")
+set(TABLE_85 "$H(5) \\to c(6)\\,+\\,\\overline{c}(7)$; ")
 set(TABLE_43 "$X(6) + Z(7)(\\to e^+ (8)+ e^- (9))$; ")
 
 
@@ -234,13 +236,13 @@ foreach( i IN ITEMS 1 2 3 4 5 6 7 8 9
            30 31 32 33 34 35 36 37 38 39
            40 41 42 43 44 45 46 47 48 49
            50 51 52 53                59
-           60                         69
+           60 62                      69
            70 71 72 73 74 75 76 77 78 79
-                 82 83 84 
+                 82 83 84 85
            )
     list(APPEND proc${i} "elnoPI")
 endforeach()   
-foreach( i IN ITEMS 55 56 57 58 
+foreach( i IN ITEMS 55 56 57 58 62
                                    68 
            )
     list(APPEND proc${i} "el")
@@ -292,7 +294,7 @@ endforeach()
 if (SUPERCHIC_ENABLE_ALL_TESTS)
 foreach( i IN  ITEMS
                           55 56 57 58 59
-           60                      68 69
+           60 62                   68 69
            70 71 72 73 74 75 76 
                  82 83 84 
            )
@@ -339,7 +341,7 @@ endforeach()
 if (SUPERCHIC_ENABLE_ALL_TESTS)
 foreach( i IN ITEMS  
            55 56 57 58 59
-           60 68 69
+           60 62 68 69
            70 71 72 73 74 75 76
            )
     list(APPEND proc${i} "el")
@@ -386,7 +388,7 @@ if (SUPERCHIC_ENABLE_ALL_TESTS)
 foreach( i IN ITEMS 
                                    48 49
            50 51 52 53 54 55 56 57 58 59
-           60 61                   68 69
+           60 61 62                68 69
            70 71 72 73 74 75 76 77 78 79
                  82 83 84 
            )
