@@ -181,13 +181,13 @@ else()
                         "$<$<COMPILE_LANG_AND_ID:Fortran,PGI>:-mcmodel=medium>")
 endif()
 set_source_files_properties( ${CMAKE_CURRENT_SOURCE_DIR}/src/diss/Elastic.f ${CMAKE_CURRENT_SOURCE_DIR}/src/inition/gdrin.f 
-                            ${CMAKE_CURRENT_SOURCE_DIR}/src/user/histo.f 
+                            ${CMAKE_CURRENT_SOURCE_DIR}/src/user/histo.f ${CMAKE_CURRENT_SOURCE_DIR}/src/var/gauss.f 
                              PROPERTIES Fortran_PREPROCESS ON Fortran_FORMAT FREE)
 
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin" OR  ${CMAKE_VERSION} VERSION_LESS 3.18)
 set_source_files_properties( ${CMAKE_CURRENT_SOURCE_DIR}/src/user/histo.f ${CMAKE_CURRENT_SOURCE_DIR}/src/diss/Elastic.f ${CMAKE_CURRENT_SOURCE_DIR}/src/inition/gdrin.f 
-                            ${CMAKE_CURRENT_SOURCE_DIR}/src/user/histo.f 
+                            ${CMAKE_CURRENT_SOURCE_DIR}/src/user/histo.f ${CMAKE_CURRENT_SOURCE_DIR}/src/var/gauss.f 
                              PROPERTIES COMPILE_FLAGS "-traditional -cpp" )  
 endif()
 
@@ -280,6 +280,9 @@ if ( NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
               ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/Caldwell.dat
               ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/Lepretre_25_103.dat 
               DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/share/SuperChic/)
+
+              file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights
+              DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/share/SuperChic/)
 endif()
 
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/SplinesWithVariableKnots.dat
@@ -292,6 +295,19 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/SplinesWithVariableKno
               ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/Lepretre_25_103.dat 
               DESTINATION ${CMAKE_INSTALL_DATADIR}/SuperChic COMPONENT data)
 INSTALL(DIRECTORY ${CMAKE_BINARY_DIR}/unpacked/SF  DESTINATION ${CMAKE_INSTALL_DATADIR}/SuperChic)
+
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g96_x.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g96_w.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g128_x.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g128_w.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g256_x.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g256_w.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g512_x.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g512_w.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g1024_x.dat
+              ${CMAKE_CURRENT_SOURCE_DIR}/share/SuperChic/gauss_weights/g1024_w.dat
+              DESTINATION ${CMAKE_INSTALL_DATADIR}/SuperChic/gauss_weights/ COMPONENT data)
+
 
 if (SUPERCHIC_ENABLE_APFELSF)
   find_package(APFEL REQUIRED)

@@ -2644,13 +2644,15 @@ c
       elseif(proc.eq.56)then
          ndim=6
          pol=4
+
          mq=me
+
          if(beam.eq.'prot')then
             offshell=.true.
             if(erec.eq.'lhe')enew=.true.
          endif
 
-c         offshell=.false.
+         offshell=.true.
 
          if(erec.eq.'lhe')enew=.true.
          dps=2

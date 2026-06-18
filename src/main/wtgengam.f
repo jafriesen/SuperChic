@@ -21,6 +21,7 @@ ccc   calls subprocess amplitude
             if(proc.eq.56.or.proc.eq.57.or.proc.eq.58.or.proc.eq.62
      &         .or.proc.eq.63)then
                call lloff(p)
+c               call lloff_test(p)
             endif
 
             if(proc.eq.76)then

@@ -263,6 +263,7 @@ ccc   gamma gamma --> l+l- subprocess amplitude - off-shell
 
       zout=zout1+zout2
       zout=zout*4d0*pi*dsqrt(alphaEM(qsq1)*alphaEM(qsq2))
+c      zout=zout*4d0*pi*dsqrt(alpha**2)
       zout=zout*dsqrt(conv)*dsqrt(beta)
       if(proc.eq.62)then
          zout=zout*dsqrt(3d0)*(2d0/3d0)**2
